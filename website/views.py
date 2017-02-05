@@ -11,7 +11,6 @@ def index(request):
 
 def result(request):
     if request.method:
-        print request.POST
         return render(request, "website/display.html", {'site_title': 'Result'})
     else:
         return HttpResponseForbidden()
