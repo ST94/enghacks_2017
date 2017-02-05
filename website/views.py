@@ -1,3 +1,4 @@
+from django.http import HttpResponseForbidden
 from django.shortcuts import render
 
 
@@ -6,3 +7,11 @@ def index(request):
         'site_title': 'Homepage',
     }
     return render(request, "website/index.html", args)
+
+
+def result(request):
+    if request.method:
+        print request.POST
+        return render(request, "website/display.html", {'site_title': 'Result'})
+    else:
+        return HttpResponseForbidden()

@@ -1,0 +1,41 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="container">
+            <div class="text-vertical-center">
+                <img src="{% static 'website/img/main.jpg' %}" alt="background" class="background-img">
+
+                <h1>Based on your selections of major {{ major }}{% if option != '' %} and option {{ option }}{% endif %}, the courses you should take are:</h1>
+
+            {% for year in years %}
+                <h2>Year {{ year.name }}</h2>
+
+                </br>
+
+                <table style="width:70vh; margin: 0 auto; background: white;">
+                    <tr>
+                        <th style="text-align: center;">Course Name</th>
+                        <th style="text-align: center;">Course Code</th> 
+                    </tr>
+                {% for course in year.courses %}
+                    <tr>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.code }}</td> 
+                    </tr>
+                {% endfor %}
+                </table>
+
+                </br>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrascripts %}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'website/display.css' %}" type="text/css" />
+{% endblock %}
