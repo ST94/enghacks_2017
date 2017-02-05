@@ -7,6 +7,7 @@ class Course(models.Model):
     category = models.ForeignKey("Category")
     course_number = models.IntegerField()
     prerequisites = models.ManyToManyField("self", blank=True)
+    terms_offered = models.ManyToManyField("Term")
 
     def __str__(self):
         return self.name
@@ -33,3 +34,6 @@ class Option(models.Model):
 
     def __str__(self):
         return self.name
+
+class Term(models.Model):
+    term = models.CharField(max_length=100)
